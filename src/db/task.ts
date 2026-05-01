@@ -3,8 +3,8 @@ import type { Task } from '../types/index.js';
 
 export function createTask(task: Omit<Task, 'id' | 'created_at'>): Task {
   const stmt = db.prepare(`
-    INSERT INTO tasks (goal_id, title, description, ai_suggestion, tags, status, priority, due_date, assignee, progress, result)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    INSERT INTO tasks (goal_id, title, description, ai_suggestion, tags, status, priority, due_date, completed_at, assignee, progress, result)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   `);
   const result = stmt.run(
     task.goal_id,
@@ -15,6 +15,7 @@ export function createTask(task: Omit<Task, 'id' | 'created_at'>): Task {
     task.status || 'pending',
     task.priority || 'medium',
     task.due_date || '',
+    task.completed_at || '',
     task.assignee || '本人',
     task.progress || '',
     task.result || ''
@@ -44,7 +45,7 @@ export function listTasks(goalId?: number, status?: string): Task[] {
 }
 
 export function updateTask(id: number, fields: Partial<Task>): Task | undefined {
-  const allowed = ['goal_id', 'title', 'description', 'ai_suggestion', 'tags', 'status', 'priority', 'due_date', 'assignee', 'progress', 'result'];
+  const allowed = ['goal_id', 'title', 'description', 'ai_suggestion', 'tags', 'status', 'priority', 'due_date', 'completed_at', 'assignee', 'progress', 'result'];
   const updates = Object.keys(fields).filter(k => allowed.includes(k) && k !== 'id');
   if (updates.length === 0) return getTask(id);
   const sql = `UPDATE tasks SET ${updates.map(k => `${k} = ?`).join(', ')} WHERE id = ?`;

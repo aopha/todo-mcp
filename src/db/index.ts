@@ -29,6 +29,7 @@ db.exec(`
     priority TEXT DEFAULT 'medium',
     created_at TEXT DEFAULT (datetime('now')),
     due_date TEXT DEFAULT '',
+    completed_at TEXT DEFAULT '',
     assignee TEXT DEFAULT '本人',
     progress TEXT DEFAULT '',
     result TEXT DEFAULT '',

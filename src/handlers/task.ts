@@ -15,6 +15,7 @@ export const taskHandlers = {
         status: { type: 'string', enum: ['pending', 'done', 'doing'] },
         priority: { type: 'string', enum: ['high', 'medium', 'low'] },
         due_date: { type: 'string' },
+        completed_at: { type: 'string' },
         assignee: { type: 'string' },
         progress: { type: 'string' },
         result: { type: 'string' }
@@ -60,6 +61,7 @@ export const taskHandlers = {
         status: { type: 'string', enum: ['pending', 'done', 'doing'] },
         priority: { type: 'string', enum: ['high', 'medium', 'low'] },
         due_date: { type: 'string' },
+        completed_at: { type: 'string' },
         assignee: { type: 'string' },
         progress: { type: 'string' },
         result: { type: 'string' }

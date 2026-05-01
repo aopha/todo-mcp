@@ -8,6 +8,7 @@ export interface Task {
   status: 'pending' | 'done' | 'doing';
   priority: 'high' | 'medium' | 'low';
   created_at: string;
+  completed_at: string;
   due_date: string;
   assignee: '本人' | 'AI';
   progress: string;
