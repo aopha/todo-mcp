@@ -1,0 +1,41 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__MiniMax__web_search",
+      "mcp__MiniMax__understand_image",
+      "Bash(git status)",
+      "Bash(git status *)",
+      "Bash(git log)",
+      "Bash(git log *)",
+      "Bash(git diff)",
+      "Bash(git diff *)",
+      "Bash(git branch)",
+      "Bash(git branch *)",
+      "Bash(git show)",
+      "Bash(git show *)",
+      "Bash(git remote)",
+      "Bash(git remote *)",
+      "Bash(git stash list)",
+      "Bash(git config --get *)",
+      "Bash(ls)",
+      "Bash(ls -la)",
+      "Bash(ls -l)",
+      "Bash(ls -lh)",
+      "Bash(ls *)",
+      "Bash(pwd)",
+      "Bash(which *)",
+      "Bash(cat *)",
+      "Bash(head *)",
+      "Bash(tail *)",
+      "Bash(wc -l *)",
+      "Bash(grep *)",
+      "Bash(rg *)",
+      "Bash(find *)",
+      "Bash(echo *)",
+      "Bash(date)",
+      "Bash(NODE_PATH=* node *)",
+      "Read(/**)",
+      "Read(/*)"
+    ]
+  }
+}
