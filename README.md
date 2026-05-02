@@ -112,6 +112,7 @@ npm link
 | `result` | string | 结果 |
 | `ai_suggestion` | string | AI 建议 |
 | `created_at` | string | 创建时间 |
+| `completed_at` | string | 完成时间 |
 
 ### 目标字段
 
