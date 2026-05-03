@@ -125,6 +125,7 @@ npm link
 | `criteria` | string | 完成标准 |
 | `weight` | number | 权重 |
 | `ai_suggestion` | string | AI 建议 |
+| `created_at` | string | 创建时间 |
 
 ## 开发
 

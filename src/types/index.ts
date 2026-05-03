@@ -24,4 +24,5 @@ export interface Goal {
   criteria: string;
   weight: number;
   ai_suggestion: string;
+  created_at: string;
 }

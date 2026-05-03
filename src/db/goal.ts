@@ -1,7 +1,7 @@
 import db from './index.js';
 import type { Goal } from '../types/index.js';
 
-export function createGoal(goal: Omit<Goal, 'id'>): Goal {
+export function createGoal(goal: Omit<Goal, 'id' | 'created_at'>): Goal {
   const stmt = db.prepare(`
     INSERT INTO goals (title, description, period, criteria, weight, ai_suggestion)
     VALUES (?, ?, ?, ?, ?, ?)
@@ -14,7 +14,7 @@ export function createGoal(goal: Omit<Goal, 'id'>): Goal {
     goal.weight || 0,
     goal.ai_suggestion || ''
   );
-  return { ...goal, id: result.lastInsertRowid as number };
+  return { ...goal, id: result.lastInsertRowid as number, created_at: new Date().toISOString() };
 }
 
 export function getGoal(id: number): Goal | undefined {

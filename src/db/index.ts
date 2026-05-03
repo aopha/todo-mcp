@@ -15,7 +15,8 @@ db.exec(`
     period TEXT DEFAULT '',
     criteria TEXT DEFAULT '',
     weight REAL DEFAULT 0,
-    ai_suggestion TEXT DEFAULT ''
+    ai_suggestion TEXT DEFAULT '',
+    created_at TEXT DEFAULT (datetime('now'))
   );
 
   CREATE TABLE IF NOT EXISTS tasks (
@@ -51,5 +52,11 @@ const addColumnIfNotExists = (name: string, type: string, defaultVal: string) =>
 addColumnIfNotExists('executor', 'TEXT', '');
 addColumnIfNotExists('progress', 'INTEGER', '0');
 addColumnIfNotExists('completed_at', 'TEXT', '');
+
+// Migration: add created_at to goals if not exists
+const goalColumns = db.prepare('PRAGMA table_info(goals)').all() as { name: string }[];
+if (!goalColumns.map(c => c.name).includes('created_at')) {
+  db.exec(`ALTER TABLE goals ADD COLUMN created_at TEXT DEFAULT (datetime('now'))`);
+}
 
 export default db;
