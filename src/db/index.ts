@@ -16,7 +16,7 @@ db.exec(`
     criteria TEXT DEFAULT '',
     weight REAL DEFAULT 0,
     ai_suggestion TEXT DEFAULT '',
-    created_at TEXT DEFAULT (datetime('now'))
+    created_at TEXT DEFAULT (datetime('now', 'localtime'))
   );
 
   CREATE TABLE IF NOT EXISTS tasks (
@@ -28,7 +28,7 @@ db.exec(`
     tags TEXT DEFAULT '',
     status TEXT DEFAULT 'pending',
     priority TEXT DEFAULT 'medium',
-    created_at TEXT DEFAULT (datetime('now')),
+    created_at TEXT DEFAULT (datetime('now', 'localtime')),
     due_date TEXT DEFAULT '',
     completed_at TEXT DEFAULT '',
     assignee TEXT DEFAULT '',
@@ -38,25 +38,5 @@ db.exec(`
     FOREIGN KEY (goal_id) REFERENCES goals(id) ON DELETE SET NULL
   );
 `);
-
-// Migration: add columns only if they don't exist
-const taskColumns = db.prepare('PRAGMA table_info(tasks)').all() as { name: string }[];
-const columnNames = taskColumns.map(c => c.name);
-
-const addColumnIfNotExists = (name: string, type: string, defaultVal: string) => {
-  if (!columnNames.includes(name)) {
-    db.exec(`ALTER TABLE tasks ADD COLUMN ${name} ${type} DEFAULT '${defaultVal}'`);
-  }
-};
-
-addColumnIfNotExists('executor', 'TEXT', '');
-addColumnIfNotExists('progress', 'INTEGER', '0');
-addColumnIfNotExists('completed_at', 'TEXT', '');
-
-// Migration: add created_at to goals if not exists
-const goalColumns = db.prepare('PRAGMA table_info(goals)').all() as { name: string }[];
-if (!goalColumns.map(c => c.name).includes('created_at')) {
-  db.exec(`ALTER TABLE goals ADD COLUMN created_at TEXT DEFAULT (datetime('now'))`);
-}
 
 export default db;
