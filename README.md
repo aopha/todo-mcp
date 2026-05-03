@@ -106,9 +106,10 @@ npm link
 | `priority` | "high" \| "medium" \| "low" | 优先级 |
 | `goal_id` | number \| null | 关联的目标 ID |
 | `due_date` | string | 截止日期 |
-| `assignee` | "本人" \| "AI" | 负责人 |
+| `assignee` | string | 负责人 |
+| `executor` | string | 执行人 |
 | `tags` | string | 标签 |
-| `progress` | string | 进度 |
+| `progress` | number | 进度 (0-100) |
 | `result` | string | 结果 |
 | `ai_suggestion` | string | AI 建议 |
 | `created_at` | string | 创建时间 |

@@ -30,11 +30,26 @@ db.exec(`
     created_at TEXT DEFAULT (datetime('now')),
     due_date TEXT DEFAULT '',
     completed_at TEXT DEFAULT '',
-    assignee TEXT DEFAULT '本人',
-    progress TEXT DEFAULT '',
+    assignee TEXT DEFAULT '',
+    executor TEXT DEFAULT '',
+    progress INTEGER DEFAULT 0,
     result TEXT DEFAULT '',
     FOREIGN KEY (goal_id) REFERENCES goals(id) ON DELETE SET NULL
   );
 `);
+
+// Migration: add columns only if they don't exist
+const taskColumns = db.prepare('PRAGMA table_info(tasks)').all() as { name: string }[];
+const columnNames = taskColumns.map(c => c.name);
+
+const addColumnIfNotExists = (name: string, type: string, defaultVal: string) => {
+  if (!columnNames.includes(name)) {
+    db.exec(`ALTER TABLE tasks ADD COLUMN ${name} ${type} DEFAULT '${defaultVal}'`);
+  }
+};
+
+addColumnIfNotExists('executor', 'TEXT', '');
+addColumnIfNotExists('progress', 'INTEGER', '0');
+addColumnIfNotExists('completed_at', 'TEXT', '');
 
 export default db;
