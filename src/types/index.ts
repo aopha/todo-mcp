@@ -25,4 +25,18 @@ export interface Goal {
   weight: number;
   ai_suggestion: string;
   created_at: string;
+  result: string;
+  self_evaluation: string;
+}
+
+export interface Insight {
+  id?: number;
+  title: string;
+  description: string;
+  ai_suggestion: string;
+  tags: string;
+  created_at: string;
+  status: 'pending' | 'done' | 'doing';
+  closed_loop: string;
+  closed_at: string;
 }

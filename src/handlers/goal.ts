@@ -12,7 +12,9 @@ export const goalHandlers = {
         period: { type: 'string' },
         criteria: { type: 'string' },
         weight: { type: 'number' },
-        ai_suggestion: { type: 'string' }
+        ai_suggestion: { type: 'string' },
+        result: { type: 'string' },
+        self_evaluation: { type: 'string' }
       },
       required: ['title']
     },
@@ -46,7 +48,9 @@ export const goalHandlers = {
         period: { type: 'string' },
         criteria: { type: 'string' },
         weight: { type: 'number' },
-        ai_suggestion: { type: 'string' }
+        ai_suggestion: { type: 'string' },
+        result: { type: 'string' },
+        self_evaluation: { type: 'string' }
       },
       required: ['id']
     },

@@ -16,7 +16,9 @@ db.exec(`
     criteria TEXT DEFAULT '',
     weight REAL DEFAULT 0,
     ai_suggestion TEXT DEFAULT '',
-    created_at TEXT DEFAULT (datetime('now', 'localtime'))
+    created_at TEXT DEFAULT (datetime('now', 'localtime')),
+    result TEXT DEFAULT '',
+    self_evaluation TEXT DEFAULT ''
   );
 
   CREATE TABLE IF NOT EXISTS tasks (
@@ -36,6 +38,18 @@ db.exec(`
     progress INTEGER DEFAULT 0,
     result TEXT DEFAULT '',
     FOREIGN KEY (goal_id) REFERENCES goals(id) ON DELETE SET NULL
+  );
+
+  CREATE TABLE IF NOT EXISTS insights (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    description TEXT DEFAULT '',
+    ai_suggestion TEXT DEFAULT '',
+    tags TEXT DEFAULT '',
+    created_at TEXT DEFAULT (datetime('now', 'localtime')),
+    status TEXT DEFAULT 'pending',
+    closed_loop TEXT DEFAULT '',
+    closed_at TEXT DEFAULT ''
   );
 `);
 
