@@ -126,6 +126,8 @@ npm link
 | `weight` | number | 权重 |
 | `ai_suggestion` | string | AI 建议 |
 | `created_at` | string | 创建时间 |
+| `result` | string | 结果 |
+| `self_evaluation` | string | 自我评价 |
 
 ## 开发
 
