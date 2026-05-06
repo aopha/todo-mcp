@@ -33,8 +33,10 @@ todo-mcp/
 │   └── types/            # TypeScript 类型定义
 │       └── index.ts
 ├── dist/                 # 编译输出
-├── docs/                 # 文档
-└── todo.db               # SQLite 数据库文件
+├── memory/               # 文档和数据库
+│   ├── memory.db         # SQLite 数据库文件
+│   ├── prompt/           # 提示词
+│   └── superpowers/      # 规划
 ```
 
 ## 安装
@@ -167,10 +169,10 @@ npm run watch
 
 ## 数据库
 
-数据存储在 `todo.db` (SQLite)。如需重置：
+数据存储在 `memory/memory.db` (SQLite)。如需重置：
 
 ```bash
-rm todo.db
+rm memory/memory.db
 # 下次启动时会自动创建新数据库
 ```
 
