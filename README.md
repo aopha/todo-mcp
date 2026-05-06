@@ -7,6 +7,7 @@
 - **任务管理**：创建、查询、更新、删除任务
 - **目标管理**：创建、查询、更新、删除目标（Goal）
 - **记录管理**：创建、查询、更新、删除记录（Record）
+- **提醒管理**：创建、查询、更新、删除提醒（Reminder）
 - **任务关联目标**：支持将任务关联到特定目标
 
 ## 技术栈
@@ -25,11 +26,13 @@ todo-mcp/
 │   │   ├── index.ts
 │   │   ├── task.ts       # 任务 CRUD
 │   │   ├── goal.ts       # 目标 CRUD
-│   │   └── record.ts     # 记录 CRUD
+│   │   ├── record.ts     # 记录 CRUD
+│   │   └── reminder.ts    # 提醒 CRUD
 │   ├── handlers/         # MCP 工具处理器
 │   │   ├── task.ts       # 任务相关工具
 │   │   ├── goal.ts       # 目标相关工具
-│   │   └── record.ts     # 记录相关工具
+│   │   ├── record.ts     # 记录相关工具
+│   │   └── reminder.ts    # 提醒相关工具
 │   └── types/            # TypeScript 类型定义
 │       └── index.ts
 ├── dist/                 # 编译输出
@@ -112,6 +115,16 @@ npm link
 | `update_record` | 更新记录 |
 | `delete_record` | 删除记录 |
 
+#### 提醒操作
+
+| 工具名 | 功能 |
+|--------|------|
+| `create_reminder` | 创建提醒 |
+| `get_reminder` | 获取提醒详情 |
+| `list_reminders` | 列出提醒 |
+| `update_reminder` | 更新提醒 |
+| `delete_reminder` | 删除提醒 |
+
 ### 任务字段
 
 | 字段 | 类型 | 说明 |
@@ -156,6 +169,18 @@ npm link
 | `status` | "pending" \| "doing" \| "done" | 状态 |
 | `closed_loop` | string | 整理闭环 |
 | `closed_at` | string | 闭环时间 |
+| `created_at` | string | 创建时间 |
+
+### 提醒字段
+
+| 字段 | 类型 | 说明 |
+|------|------|------|
+| `title` | string | 提醒标题（必填） |
+| `content` | string | 提醒内容 |
+| `ai_suggestion` | string | AI 建议 |
+| `remind_at` | string | 提醒时间 |
+| `status` | "pending" \| "done" | 状态 |
+| `tags` | string | 标签 |
 | `created_at` | string | 创建时间 |
 
 ## 开发
