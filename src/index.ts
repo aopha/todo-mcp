@@ -4,14 +4,14 @@ import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
 import { ListToolsRequestSchema, CallToolRequestSchema } from '@modelcontextprotocol/sdk/types.js';
 import { taskHandlers } from './handlers/task.js';
 import { goalHandlers } from './handlers/goal.js';
-import { insightHandlers } from './handlers/insight.js';
+import { recordHandlers } from './handlers/record.js';
 
 const server = new Server(
   { name: 'todo-mcp', version: '1.0.0' },
   { capabilities: { tools: {} } }
 );
 
-const tools = { ...taskHandlers, ...goalHandlers, ...insightHandlers };
+const tools = { ...taskHandlers, ...goalHandlers, ...recordHandlers };
 
 server.setRequestHandler(ListToolsRequestSchema, async () => ({
   tools: Object.entries(tools).map(([name, { description, inputSchema }]) => ({

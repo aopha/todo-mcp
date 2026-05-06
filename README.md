@@ -6,7 +6,7 @@
 
 - **任务管理**：创建、查询、更新、删除任务
 - **目标管理**：创建、查询、更新、删除目标（Goal）
-- **感悟管理**：创建、查询、更新、删除感悟（Insight）
+- **记录管理**：创建、查询、更新、删除记录（Record）
 - **任务关联目标**：支持将任务关联到特定目标
 
 ## 技术栈
@@ -25,11 +25,11 @@ todo-mcp/
 │   │   ├── index.ts
 │   │   ├── task.ts       # 任务 CRUD
 │   │   ├── goal.ts       # 目标 CRUD
-│   │   └── insight.ts    # 感悟 CRUD
+│   │   └── record.ts     # 记录 CRUD
 │   ├── handlers/         # MCP 工具处理器
 │   │   ├── task.ts       # 任务相关工具
 │   │   ├── goal.ts       # 目标相关工具
-│   │   └── insight.ts    # 感悟相关工具
+│   │   └── record.ts     # 记录相关工具
 │   └── types/            # TypeScript 类型定义
 │       └── index.ts
 ├── dist/                 # 编译输出
@@ -101,15 +101,15 @@ npm link
 | `update_goal` | 更新目标 |
 | `delete_goal` | 删除目标 |
 
-#### 感悟操作
+#### 记录操作
 
 | 工具名 | 功能 |
 |--------|------|
-| `create_insight` | 创建感悟 |
-| `get_insight` | 获取感悟详情 |
-| `list_insights` | 列出感悟 |
-| `update_insight` | 更新感悟 |
-| `delete_insight` | 删除感悟 |
+| `create_record` | 创建记录 |
+| `get_record` | 获取记录详情 |
+| `list_records` | 列出记录 |
+| `update_record` | 更新记录 |
+| `delete_record` | 删除记录 |
 
 ### 任务字段
 
@@ -144,13 +144,13 @@ npm link
 | `result` | string | 结果 |
 | `self_evaluation` | string | 自我评价 |
 
-### 感悟字段
+### 记录字段
 
 | 字段 | 类型 | 说明 |
 |------|------|------|
-| `title` | string | 感悟标题（必填） |
-| `description` | string | 感悟描述 |
-| `ai_suggestion` | string | AI 建议 |
+| `title` | string | 记录标题（必填） |
+| `content` | string | 记录内容 |
+| `ai_throught` | string | AI 思考 |
 | `tags` | string | 标签 |
 | `status` | "pending" \| "doing" \| "done" | 状态 |
 | `closed_loop` | string | 整理闭环 |

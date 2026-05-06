@@ -29,11 +29,11 @@ export interface Goal {
   self_evaluation: string;
 }
 
-export interface Insight {
+export interface Record {
   id?: number;
   title: string;
-  description: string;
-  ai_suggestion: string;
+  content: string;
+  ai_throught: string;
   tags: string;
   created_at: string;
   status: 'pending' | 'done' | 'doing';

@@ -1,15 +1,15 @@
-import { createInsight, getInsight, listInsights, updateInsight, deleteInsight } from '../db/insight.js';
-import type { Insight } from '../types/index.js';
+import { createRecord, getRecord, listRecords, updateRecord, deleteRecord } from '../db/record.js';
+import type { Record } from '../types/index.js';
 
-export const insightHandlers = {
-  create_insight: {
-    description: 'Create a new insight',
+export const recordHandlers = {
+  create_record: {
+    description: 'Create a new record',
     inputSchema: {
       type: 'object',
       properties: {
         title: { type: 'string' },
-        description: { type: 'string' },
-        ai_suggestion: { type: 'string' },
+        content: { type: 'string' },
+        ai_throught: { type: 'string' },
         tags: { type: 'string' },
         status: { type: 'string', enum: ['pending', 'done', 'doing'] },
         closed_loop: { type: 'string' },
@@ -17,39 +17,39 @@ export const insightHandlers = {
       },
       required: ['title']
     },
-    handler: (args: Partial<Insight>) => createInsight(args as Omit<Insight, 'id' | 'created_at'>)
+    handler: (args: Partial<Record>) => createRecord(args as Omit<Record, 'id' | 'created_at'>)
   },
 
-  get_insight: {
-    description: 'Get an insight by ID',
+  get_record: {
+    description: 'Get a record by ID',
     inputSchema: {
       type: 'object',
       properties: { id: { type: 'number' } },
       required: ['id']
     },
-    handler: (args: { id: number }) => getInsight(args.id)
+    handler: (args: { id: number }) => getRecord(args.id)
   },
 
-  list_insights: {
-    description: 'List insights with optional status filter',
+  list_records: {
+    description: 'List records with optional status filter',
     inputSchema: {
       type: 'object',
       properties: {
         status: { type: 'string', enum: ['pending', 'done', 'doing'] }
       }
     },
-    handler: (args: { status?: string }) => listInsights(args.status)
+    handler: (args: { status?: string }) => listRecords(args.status)
   },
 
-  update_insight: {
-    description: 'Update an insight',
+  update_record: {
+    description: 'Update a record',
     inputSchema: {
       type: 'object',
       properties: {
         id: { type: 'number' },
         title: { type: 'string' },
-        description: { type: 'string' },
-        ai_suggestion: { type: 'string' },
+        content: { type: 'string' },
+        ai_throught: { type: 'string' },
         tags: { type: 'string' },
         status: { type: 'string', enum: ['pending', 'done', 'doing'] },
         closed_loop: { type: 'string' },
@@ -57,19 +57,19 @@ export const insightHandlers = {
       },
       required: ['id']
     },
-    handler: (args: Partial<Insight> & { id: number }) => {
+    handler: (args: Partial<Record> & { id: number }) => {
       const { id, ...fields } = args;
-      return updateInsight(id, fields);
+      return updateRecord(id, fields);
     }
   },
 
-  delete_insight: {
-    description: 'Delete an insight',
+  delete_record: {
+    description: 'Delete a record',
     inputSchema: {
       type: 'object',
       properties: { id: { type: 'number' } },
       required: ['id']
     },
-    handler: (args: { id: number }) => deleteInsight(args.id)
+    handler: (args: { id: number }) => deleteRecord(args.id)
   }
 };

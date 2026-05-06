@@ -40,11 +40,11 @@ db.exec(`
     FOREIGN KEY (goal_id) REFERENCES goals(id) ON DELETE SET NULL
   );
 
-  CREATE TABLE IF NOT EXISTS insights (
+  CREATE TABLE IF NOT EXISTS records (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title TEXT NOT NULL,
-    description TEXT DEFAULT '',
-    ai_suggestion TEXT DEFAULT '',
+    content TEXT DEFAULT '',
+    ai_throught TEXT DEFAULT '',
     tags TEXT DEFAULT '',
     created_at TEXT DEFAULT (datetime('now', 'localtime')),
     status TEXT DEFAULT 'pending',
