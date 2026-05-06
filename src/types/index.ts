@@ -40,3 +40,14 @@ export interface Record {
   closed_loop: string;
   closed_at: string;
 }
+
+export interface Reminder {
+  id?: number;
+  title: string;
+  content: string;
+  ai_suggestion: string;
+  created_at: string;
+  remind_at: string;
+  status: 'pending' | 'done';
+  tags: string;
+}

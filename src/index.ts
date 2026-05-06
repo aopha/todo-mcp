@@ -5,13 +5,14 @@ import { ListToolsRequestSchema, CallToolRequestSchema } from '@modelcontextprot
 import { taskHandlers } from './handlers/task.js';
 import { goalHandlers } from './handlers/goal.js';
 import { recordHandlers } from './handlers/record.js';
+import { reminderHandlers } from './handlers/reminder.js';
 
 const server = new Server(
   { name: 'todo-mcp', version: '1.0.0' },
   { capabilities: { tools: {} } }
 );
 
-const tools = { ...taskHandlers, ...goalHandlers, ...recordHandlers };
+const tools = { ...taskHandlers, ...goalHandlers, ...recordHandlers, ...reminderHandlers };
 
 server.setRequestHandler(ListToolsRequestSchema, async () => ({
   tools: Object.entries(tools).map(([name, { description, inputSchema }]) => ({
