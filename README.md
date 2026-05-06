@@ -35,6 +35,7 @@ todo-mcp/
 ├── dist/                 # 编译输出
 ├── memory/               # 文档和数据库
 │   ├── memory.db         # SQLite 数据库文件
+│   ├── db-bak/           # 数据库备份
 │   ├── prompt/           # 提示词
 │   └── superpowers/      # 规划
 ```
