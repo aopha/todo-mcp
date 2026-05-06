@@ -51,6 +51,17 @@ db.exec(`
     closed_loop TEXT DEFAULT '',
     closed_at TEXT DEFAULT ''
   );
+
+  CREATE TABLE IF NOT EXISTS reminders (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    content TEXT DEFAULT '',
+    ai_suggestion TEXT DEFAULT '',
+    created_at TEXT DEFAULT (datetime('now', 'localtime')),
+    remind_at TEXT DEFAULT '',
+    status TEXT DEFAULT 'pending',
+    tags TEXT DEFAULT ''
+  );
 `);
 
 export default db;
